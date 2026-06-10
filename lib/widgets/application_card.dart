@@ -7,157 +7,227 @@ class ApplicationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Column(
-        crossAxisAlignment:
-            CrossAxisAlignment.start,
         children: [
+          Row(
+            children: [
+              Text(
+                "My Applications",
+                style: GoogleFonts.poppins(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF111827),
+                ),
+              ),
 
-          Text(
-            "Recent Applications",
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: const Color(0xFF1F2937),
-            ),
+              const Spacer(),
+
+              InkWell(
+                onTap: () {},
+                child: Row(
+                  children: [
+                    Text(
+                      "View All",
+                      style: GoogleFonts.poppins(
+                        color: const Color(0xFF2563EB),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 12,
+                      color: Color(0xFF2563EB),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
 
-          const SizedBox(height: 18),
+          const SizedBox(height: 20),
 
-          _applicationCard(
-            university:
-                "University of Toronto",
-            course:
-                "Master of Computer Science",
+          _applicationTile(
+            university: "University of Toronto",
+            course: "Master of Computer Science",
             status: "Under Review",
+            submittedDate: "Sep 15, 2026",
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
 
-          _applicationCard(
-            university:
-                "University of British Columbia",
-            course:
-                "Master of Engineering",
+          _applicationTile(
+            university: "University of British Columbia",
+            course: "Master of Engineering",
             status: "Offer Received",
+            submittedDate: "Sep 10, 2026",
           ),
         ],
       ),
     );
   }
 
-  Widget _applicationCard({
+  Widget _applicationTile({
     required String university,
     required String course,
     required String status,
+    required String submittedDate,
   }) {
-    Color badgeColor;
     Color badgeBg;
+    Color badgeColor;
 
     if (status == "Offer Received") {
-      badgeColor = const Color(0xFF16A34A);
       badgeBg = const Color(0xFFDCFCE7);
+      badgeColor = const Color(0xFF16A34A);
     } else if (status == "Under Review") {
-      badgeColor = const Color(0xFFF59E0B);
       badgeBg = const Color(0xFFFEF3C7);
-    } else if (status == "Rejected") {
-      badgeColor = const Color(0xFFDC2626);
-      badgeBg = const Color(0xFFFEE2E2);
+      badgeColor = const Color(0xFFD97706);
     } else {
-      badgeColor = const Color(0xFF2563EB);
       badgeBg = const Color(0xFFDBEAFE);
+      badgeColor = const Color(0xFF2563EB);
     }
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: const Color(0xFFE5E7EB),
         ),
-        borderRadius:
-            BorderRadius.circular(18),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-          const CircleAvatar(
-            radius: 24,
-            backgroundColor:
-                Color(0xFFEFF4FF),
-            child: Icon(
-              Icons.school_outlined,
-              color: Color(0xFF2B3674),
-            ),
-          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
 
-          const SizedBox(width: 14),
-
-          Expanded(
-            child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start,
-              children: [
-
-                Text(
-                  university,
-                  style: GoogleFonts.poppins(
-                    fontSize: 15,
-                    fontWeight:
-                        FontWeight.w700,
-                    color:
-                        const Color(0xFF1F2937),
-                  ),
+              Container(
+                width: 52,
+                height: 52,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF3F4F6),
+                  borderRadius: BorderRadius.circular(14),
                 ),
-
-                const SizedBox(height: 4),
-
-                Text(
-                  course,
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    color:
-                        const Color(0xFF6B7280),
-                  ),
-                ),
-
-                const SizedBox(height: 10),
-
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: badgeBg,
-                    borderRadius:
-                        BorderRadius.circular(
-                            30),
-                  ),
+                child: Center(
                   child: Text(
-                    status,
-                    style:
-                        GoogleFonts.poppins(
-                      color: badgeColor,
-                      fontWeight:
-                          FontWeight.w700,
-                      fontSize: 12,
+                    "U",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 18,
+                      color: const Color(0xFF1E3A8A),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+
+              const SizedBox(width: 14),
+
+              Expanded(
+                child: Column(
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                  children: [
+
+                    Text(
+                      university,
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: const Color(0xFF111827),
+                      ),
+                    ),
+
+                    const SizedBox(height: 4),
+
+                    Text(
+                      course,
+                      style: GoogleFonts.poppins(
+                        fontSize: 13,
+                        color: const Color(0xFF6B7280),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 16),
+
+          Container(
+            height: 1,
+            color: const Color(0xFFF3F4F6),
+          ),
+
+          const SizedBox(height: 14),
+
+          Row(
+            children: [
+
+              Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                children: [
+
+                  Text(
+                    "Submitted",
+                    style: GoogleFonts.poppins(
+                      fontSize: 11,
+                      color: const Color(0xFF9CA3AF),
+                    ),
+                  ),
+
+                  const SizedBox(height: 2),
+
+                  Text(
+                    submittedDate,
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF374151),
+                    ),
+                  ),
+                ],
+              ),
+
+              const Spacer(),
+
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: badgeBg,
+                  borderRadius:
+                      BorderRadius.circular(30),
+                ),
+                child: Text(
+                  status,
+                  style: GoogleFonts.poppins(
+                    color: badgeColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

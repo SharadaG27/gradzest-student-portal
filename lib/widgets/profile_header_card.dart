@@ -7,140 +7,110 @@ class ProfileHeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(22),
         gradient: const LinearGradient(
           colors: [
-            Color(0xFF2B3674),
-            Color(0xFF4F7CFF),
+            Color(0xFF0F6BFF),
+            Color(0xFF1E40AF),
           ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(
-              0xFF2B3674,
-            ).withOpacity(0.25),
-            blurRadius: 18,
-            offset: const Offset(0, 8),
-          ),
-        ],
       ),
-      child: Column(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
-          Row(
-            crossAxisAlignment:
-                CrossAxisAlignment.start,
-            children: [
-
-              Container(
-                width: 78,
-                height: 78,
-                decoration: BoxDecoration(
+          Container(
+            width: 78,
+            height: 78,
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Center(
+              child: Text(
+                "S",
+                style: GoogleFonts.poppins(
                   color: Colors.white,
-                  borderRadius:
-                      BorderRadius.circular(
-                          20),
-                ),
-                child: const Icon(
-                  Icons.person,
-                  size: 42,
-                  color: Color(0xFF2B3674),
+                  fontSize: 34,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
+            ),
+          ),
 
-              const SizedBox(width: 16),
+          const SizedBox(width: 16),
 
-              Expanded(
-                child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
+          Expanded(
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Sharada Gurrala",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+
+                const SizedBox(height: 4),
+
+                Text(
+                  "sharada@example.com",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white70,
+                    fontSize: 14,
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+
+                Row(
                   children: [
-
                     Text(
-                      "Sharada Gurrala",
-                      style:
-                          GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight:
-                            FontWeight.w700,
-                      ),
-                    ),
-
-                    const SizedBox(height: 4),
-
-                    Text(
-                      "sharada@example.com",
-                      style:
-                          GoogleFonts.poppins(
-                        color:
-                            Colors.white70,
+                      "Indian",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white70,
                         fontSize: 13,
                       ),
                     ),
 
-                    const SizedBox(height: 8),
+                    const SizedBox(width: 8),
 
-                    Row(
-                      children: [
+                    Container(
+                      width: 4,
+                      height: 4,
+                      decoration: const BoxDecoration(
+                        color: Colors.white70,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
 
-                        const Icon(
-                          Icons.public,
-                          color:
-                              Colors.white70,
-                          size: 16,
-                        ),
+                    const SizedBox(width: 8),
 
-                        const SizedBox(
-                            width: 4),
-
-                        Text(
-                          "Indian",
-                          style:
-                              GoogleFonts
-                                  .poppins(
-                            color: Colors
-                                .white70,
-                            fontSize: 13,
-                          ),
-                        ),
-
-                        const SizedBox(
-                            width: 12),
-
-                        const Icon(
-                          Icons.calendar_today,
-                          color:
-                              Colors.white70,
-                          size: 14,
-                        ),
-
-                        const SizedBox(
-                            width: 4),
-
-                        Text(
-                          "Joined 2025",
-                          style:
-                              GoogleFonts
-                                  .poppins(
-                            color: Colors
-                                .white70,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      "Joined 2025",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white70,
+                        fontSize: 13,
+                      ),
                     ),
                   ],
                 ),
-              ),
+              ],
+            ),
+          ),
 
+          Column(
+            children: [
               Container(
-                width: 78,
-                height: 78,
+                width: 72,
+                height: 72,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
@@ -151,131 +121,28 @@ class ProfileHeaderCard extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "85%",
-                    style:
-                        GoogleFonts.poppins(
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
-                      fontWeight:
-                          FontWeight.w700,
                       fontSize: 18,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
               ),
+
+              const SizedBox(height: 6),
+
+              Text(
+                "Profile",
+                style: GoogleFonts.poppins(
+                  color: Colors.white70,
+                  fontSize: 12,
+                ),
+              ),
             ],
-          ),
-
-          const SizedBox(height: 22),
-
-          SizedBox(
-            width: double.infinity,
-            child: OutlinedButton.icon(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.edit_outlined,
-                color: Colors.white,
-              ),
-              label: Text(
-                "Edit Profile",
-                style:
-                    GoogleFonts.poppins(
-                  color: Colors.white,
-                  fontWeight:
-                      FontWeight.w600,
-                ),
-              ),
-              style: OutlinedButton.styleFrom(
-                side: const BorderSide(
-                  color: Colors.white24,
-                ),
-                shape:
-                    RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(
-                          14),
-                ),
-                padding:
-                    const EdgeInsets.symmetric(
-                  vertical: 14,
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 22),
-
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color:
-                  Colors.white.withOpacity(
-                      0.12),
-              borderRadius:
-                  BorderRadius.circular(
-                      18),
-            ),
-            child: Row(
-              mainAxisAlignment:
-                  MainAxisAlignment
-                      .spaceAround,
-              children: const [
-
-                _StatItem(
-                  value: "2",
-                  label: "Applications",
-                ),
-
-                _StatItem(
-                  value: "1",
-                  label: "Offers",
-                ),
-
-                _StatItem(
-                  value: "3/4",
-                  label: "Documents",
-                ),
-              ],
-            ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class _StatItem extends StatelessWidget {
-  final String value;
-  final String label;
-
-  const _StatItem({
-    required this.value,
-    required this.label,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-
-        Text(
-          value,
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight:
-                FontWeight.w700,
-          ),
-        ),
-
-        const SizedBox(height: 4),
-
-        Text(
-          label,
-          style: GoogleFonts.poppins(
-            color: Colors.white70,
-            fontSize: 12,
-          ),
-        ),
-      ],
     );
   }
 }

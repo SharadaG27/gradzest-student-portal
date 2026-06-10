@@ -8,72 +8,223 @@ class DashboardHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(22),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
         gradient: const LinearGradient(
-          colors: [
-            Color(0xFF2B3674),
-            Color(0xFF2563EB),
-          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
+          colors: [
+            Color(0xFF1D4ED8),
+            Color(0xFF4338CA),
+          ],
         ),
+        borderRadius: BorderRadius.circular(28),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF2563EB).withOpacity(0.25),
+            blurRadius: 24,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-          Text(
-            "Welcome Back",
-            style: GoogleFonts.poppins(
-              color: Colors.white70,
-              fontSize: 14,
-            ),
+          /// TOP BAR
+          Row(
+            children: [
+
+              Builder(
+                builder: (context) => InkWell(
+                  borderRadius: BorderRadius.circular(14),
+                  onTap: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  child: Container(
+                    width: 46,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Icon(
+                      Icons.menu_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+
+              const Spacer(),
+
+              Stack(
+                children: [
+
+                  Container(
+                    width: 46,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Icon(
+                      Icons.notifications_none_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
+
+                  Positioned(
+                    right: 10,
+                    top: 10,
+                    child: Container(
+                      width: 8,
+                      height: 8,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFFF4D4F),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
 
-          const SizedBox(height: 6),
+          const SizedBox(height: 24),
 
-          Text(
-            "Sharada",
-            style: GoogleFonts.poppins(
-              color: Colors.white,
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
-            ),
+          /// USER INFO
+          Row(
+            children: [
+
+              Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.18),
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.25),
+                    width: 1.5,
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    "S",
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(width: 14),
+
+              Expanded(
+                child: Column(
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                  children: [
+
+                    Text(
+                      "Sharada Gurrala",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+
+                    const SizedBox(height: 4),
+
+                    Text(
+                      "2 Active Applications",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white70,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
 
-          const SizedBox(height: 6),
+          const SizedBox(height: 24),
 
-          Text(
-            "Track your applications and explore universities",
-            style: GoogleFonts.poppins(
-              color: Colors.white70,
-              fontSize: 13,
-            ),
-          ),
-
-          const SizedBox(height: 22),
-
+          /// PROFILE COMPLETION
           Row(
             mainAxisAlignment:
                 MainAxisAlignment.spaceBetween,
+            children: [
+
+              Text(
+                "Profile Completion",
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+
+              Text(
+                "85%",
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: const LinearProgressIndicator(
+              value: 0.85,
+              minHeight: 6,
+              backgroundColor: Colors.white24,
+              color: Colors.white,
+            ),
+          ),
+
+          const SizedBox(height: 20),
+
+          /// KPI CARDS
+          Row(
             children: const [
-              _StatCard(
-                value: "2",
-                label: "Applications",
+
+              Expanded(
+                child: _DashboardStat(
+                  icon: Icons.description_outlined,
+                  value: "2",
+                  title: "Applications",
+                ),
               ),
-              _StatCard(
-                value: "1",
-                label: "Review",
+
+              SizedBox(width: 10),
+
+              Expanded(
+                child: _DashboardStat(
+                  icon: Icons.pending_actions_outlined,
+                  value: "1",
+                  title: "Review",
+                ),
               ),
-              _StatCard(
-                value: "1",
-                label: "Offers",
-              ),
-              _StatCard(
-                value: "3/4",
-                label: "Docs",
+
+              SizedBox(width: 10),
+
+              Expanded(
+                child: _DashboardStat(
+                  icon: Icons.workspace_premium_outlined,
+                  value: "1",
+                  title: "Offers",
+                ),
               ),
             ],
           ),
@@ -83,53 +234,62 @@ class DashboardHeader extends StatelessWidget {
   }
 }
 
-class _StatCard extends StatelessWidget {
+class _DashboardStat extends StatelessWidget {
   final String value;
-  final String label;
+  final String title;
+  final IconData icon;
 
-  const _StatCard({
+  const _DashboardStat({
     required this.value,
-    required this.label,
+    required this.title,
+    required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.symmetric(
-          horizontal: 4,
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 14,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.12),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Colors.white.withOpacity(0.15),
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 12,
-        ),
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.12),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          children: [
+      ),
+      child: Column(
+        children: [
 
-            Text(
-              value,
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-              ),
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 18,
+          ),
+
+          const SizedBox(height: 8),
+
+          Text(
+            value,
+            style: GoogleFonts.poppins(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
             ),
+          ),
 
-            const SizedBox(height: 4),
+          const SizedBox(height: 4),
 
-            Text(
-              label,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(
-                color: Colors.white70,
-                fontSize: 11,
-              ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.poppins(
+              color: Colors.white70,
+              fontSize: 11,
+              fontWeight: FontWeight.w500,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

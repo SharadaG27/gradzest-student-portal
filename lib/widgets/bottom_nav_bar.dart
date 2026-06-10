@@ -16,21 +16,29 @@ class BottomNavBar extends StatelessWidget {
       currentIndex: selectedIndex,
       onTap: onTap,
 
-      selectedItemColor:
-          const Color(0xFF2B3674),
-
-      unselectedItemColor:
-          Colors.grey,
-
       type: BottomNavigationBarType.fixed,
 
-      items: const [
+      backgroundColor: Colors.white,
 
+      elevation: 10,
+
+      selectedItemColor: const Color(0xFF2B3674),
+
+      unselectedItemColor: const Color(0xFF9CA3AF),
+
+      selectedFontSize: 12,
+      unselectedFontSize: 12,
+
+      selectedLabelStyle: const TextStyle(
+        fontWeight: FontWeight.w600,
+      ),
+
+      items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          activeIcon: Icon(Icons.home),
-          label: "Home",
-        ),
+  icon: Icon(Icons.dashboard_outlined),
+  activeIcon: Icon(Icons.dashboard),
+  label: "Dashboard",
+),
 
         BottomNavigationBarItem(
           icon: Icon(Icons.description_outlined),
@@ -45,8 +53,8 @@ class BottomNavBar extends StatelessWidget {
         ),
 
         BottomNavigationBarItem(
-          icon: Icon(Icons.chat_outlined),
-          activeIcon: Icon(Icons.chat),
+          icon: Icon(Icons.chat_bubble_outline),
+          activeIcon: Icon(Icons.chat_bubble),
           label: "Chat",
         ),
 
